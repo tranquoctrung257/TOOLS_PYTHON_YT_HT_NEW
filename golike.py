@@ -1,10 +1,5 @@
 import requests,sys,os,time,json
-from datetime import date
 from datetime import datetime
-# tz_VietNam = pytz.timezone('Asia/Ho_Chi_Minh')
-ctt = "Nếu bạn cho rằng nội dung này không vi phạm Tiêu chuẩn cộng đồng của chúng tôi,"
-cp1 = "Tham gia Facebook hoặc đăng nhập để tiếp tục."
-cp2 = "Đăng nhập Facebook để xem bài viết này."
 xanh= "\033[1;96m"
 xlacay ="\033[0;32m"
 den="\033[1;90m"
@@ -16,32 +11,11 @@ hong="\033[1;95m"
 trang="\033[1;97m"
 vang="\033[1;93m"
 syan="\033[1;36m"
-def inten(do,xanh,xduong,vang,syan):
-    print("\033[1;31m██╗░░██╗██╗███████╗██╗░░░██╗  ████████╗░█████╗░░█████╗░██╗░░░░░")
-    time.sleep(0.1)
-    print("\033[1;32m██║░░██║██║██╔════╝██║░░░██║  ╚══██╔══╝██╔══██╗██╔══██╗██║░░░░░")
-    time.sleep(0.1)
-    print("\033[1;33m███████║██║█████╗░░██║░░░██║  ░░░██║░░░██║░░██║██║░░██║██║░░░░░")
-    time.sleep(0.1)
-    print("\033[1;34m██╔══██║██║██╔══╝░░██║░░░██║  ░░░██║░░░██║░░██║██║░░██║██║░░░░░")
-    time.sleep(0.1)    
-    print("\033[1;35m██║░░██║██║███████╗╚██████╔╝  ░░░██║░░░╚█████╔╝╚█████╔╝███████╗")
-    time.sleep(0.1)    
-    print("\033[1;36m╚═╝░░╚═╝╚═╝╚══════╝░╚═════╝░  ░░░╚═╝░░░░╚════╝░░╚════╝░╚══════╝")
-    time.sleep(0.1)
-    print("\033[1;35m┌══════════════════════🌹 \033[1;37mHiếu Tool \033[1;35m🌹═════════════════════┐")
-    time.sleep(0.1)
-    print("\033[1;35m║   \033[1;37mTOOL GOLIKE : \033[1;37m   🌹VERSION 1.0🌹                       \033[1;35m║")
-    time.sleep(0.1)
-    print("\033[1;35m└══════════════════════════════════════════════════════════┘  ")
-    time.sleep(0.1)
-    print(vang+"=====================================================================")
-    time.sleep(0.1)
 def cc(title):
     for i in title:
         print(i,end='')
         time.sleep(0.02)
-def login(author,t):
+def login(author):
     head_login = {
         "Accept": "application/json, text/plain, */*",
         "Accept-Language": "vi-VN,vi;q=0.9,fr-FR;q=0.8,fr;q=0.7,en-US;q=0.6,en;q=0.5",
@@ -49,41 +23,55 @@ def login(author,t):
         "Content-Type": "application/json;charset=utf-8",
         "Origin": "https://app.golike.net",
         "Referer": "https://app.golike.net/",
-        # 'Sec-Ch-Ua':'"Not/A)Brand";v="99", "Google Chrome";v="115", "Chromium";v="115"',
-        # 'Sec-Ch-Ua-Mobile':'?0',
-        # 'Sec-Ch-Ua-Platform':'"Windows"',
-        # 'Sec-Fetch-Dest':'empty',
-        # 'Sec-Fetch-Mode':'cors',
-        # 'Sec-Fetch-Site':'same-site',
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36",
-        "T": t
+        "T": "VFZSWk5VNVVhelJOZWxWNVRXYzlQUT09"
     }
     try:
         account = requests.get("https://sv5.golike.net/api/tiktok-account",headers=head_login).json()
         if (account['status'] == 200):
             print(xlacay+"LOGIN THÀNH CÔNG                              ")
-            f = open("taikhoan.txt","w+")
-            f.write(author+"|"+t)
+            f = open("taikhoan_gl.txt","w+")
+            f.write(author)
             f.close()
             time.sleep(1)
             os.system('clear')
-            inten(do,xanh,xduong,vang,syan)
             return account
         else:
-            print(trang+"LOGIN THẤT BẠI VUI LÒNG XEM LẠI             ")
+            print(do+"LOGIN THẤT BẠI VUI LÒNG XEM LẠI             ")
             quit()
     except:
-        print(trang+"GOLIKE ĐANG LỖI, VUI LÒNG QUAY LẠI SAU!!!           ")
-        quit()
-os.system('clear')
-inten(do,xanh,xduong,vang,syan)
-print(do+"["+vang+"1"+do+"]:\033[1;97m Đăng nhập tài khoản GOLIKE lần trước   ")
-print(do+"["+vang+"2"+do+"]:\033[1;97m Đăng nhập tài khoản GOLIKE mới         ")
-select = int(input(trang+"Nhập "+vang+"1"+trang+" hoặc "+vang+"2"+xlacay+":  "+vang))
+        print(do+"GOLIKE ĐANG LỖI, VUI LÒNG QUAY LẠI SAU!!!           ")
+
+os.system("clear")
+dau="\033[1;31m[\033[1;37m×.×\033[1;31m] \033[1;37m➩"
+def banner():
+        os.system("cls" if os.name == "nt" else "clear")
+        banner = f'''
+{do}██╗░░██╗██╗███████╗██╗░░░██╗ {luc}████████╗░█████╗░░█████╗░██╗░░░░░
+{luc}██║░░██║██║██╔════╝██║░░░██║ {trang}╚══██╔══╝██╔══██╗██╔══██╗██║░░░░░
+{do}███████║██║█████╗░░██║░░░██║ {luc}░░░██║░░░██║░░██║██║░░██║██║░░░░░
+{luc}██╔══██║██║██╔══╝░░██║░░░██║ {trang}░░░██║░░░██║░░██║██║░░██║██║░░░░░
+{do}██║░░██║██║███████╗╚██████╔╝ {luc}░░░██║░░░╚█████╔╝╚█████╔╝███████╗
+{luc}╚═╝░░╚═╝╚═╝╚══════╝░╚═════╝░ {trang}░░░╚═╝░░░░╚════╝░░╚════╝░╚══════╝
+                    \033[1;33mTOOL GOLIKE NEW 
+                                      \033[1;36mCopyright By: HIẾU_TOOL
+\033[1;35m= = = = = = = = = = = = = = = = = = = = = = = = = = = = = \n'''
+        for i in banner:
+          sys.stdout.write(i)
+          sys.stdout.flush()
+          time.sleep(0.0)
+banner()
+
+print("\n")
+print(syan+"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+print(trang+"["+vang+"1"+trang+"]. Đăng nhập tài khoản GOLIKE lần trước   ")
+print(trang+"["+vang+"2"+trang+"]. Đăng nhập tài khoản GOLIKE mới         ")
+print(syan+"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+select = int(input(vang+"Nhập :  "+trang))
+banner()
 if (select == 2):
-    authorization = input(trang+"Nhập Authorization: "+vang)
-    t = input(trang+"Nhập T: "+vang)
-    account = login(authorization,t)
+    authorization = input(syan+"Nhập Authorization: "+trang)
+    account = login(authorization)
     head_login = {
         "Accept": "application/json, text/plain, */*",
         "Accept-Language": "vi-VN,vi;q=0.9,fr-FR;q=0.8,fr;q=0.7,en-US;q=0.6,en;q=0.5",
@@ -97,14 +85,13 @@ if (select == 2):
         'Sec-Fetch-Dest':'empty',
         'Sec-Fetch-Mode':'cors',
         'Sec-Fetch-Site':'same-site',
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36",
-        "T": t
+        "User-Agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36",
+        "T": "VFZSWk5VNVVhelJOZWxWNVRXYzlQUT09"
     }
 elif (select == 1):
-    f = open("taikhoan.txt","r")
+    f = open("taikhoan_gl.txt","r")
     tam = f.readline()
-    authorization = tam.split("|")[0]
-    t = tam.split("|")[1]
+    authorization = tam
     head_login = {
         "Accept": "application/json, text/plain, */*",
         "Accept-Language": "vi-VN,vi;q=0.9,fr-FR;q=0.8,fr;q=0.7,en-US;q=0.6,en;q=0.5",
@@ -118,10 +105,11 @@ elif (select == 1):
         'Sec-Fetch-Dest':'empty',
         'Sec-Fetch-Mode':'cors',
         'Sec-Fetch-Site':'same-site',
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36",
-        "T": t
+        "User-Agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36",
+        "T": "VFZSWk5VNVVhelJOZWxWNVRXYzlQUT09"
     }
-    account = login(authorization,t)
+    account = login(authorization)
+banner()
 listid = []
 listname = []
 for i in range(len(account['data'])):
@@ -130,20 +118,27 @@ for i in range(len(account['data'])):
     user_id = account['data'][i]['user_id']
     unique_username = account['data'][i]['unique_username']
     listname.append(unique_username)
-    print(do+"["+vang+str(i)+do+"]"+do+"   =>   "+vang+"ID: "+trang+str(id)+do+"   =>   "+trang+unique_username)
-stt = int(input(trang+"Chọn tài khoản để auto: "+vang))
+    print(xlacay+"["+do+str(i)+syan+"]"+xduong+"   =>   "+vang+"ID: "+trang+str(id)+xduong+"   =>   "+trang+unique_username+xlacay+"["+hong+str(i)+syan+"]")
+
+stt = int(input(syan+"Chọn tài khoản để auto: "+vang))
+time_ = int(input(syan+"Nhập deplay: "+vang))
+dung = int(input(do+"Sau bao nhiêu nhiệm vụ thì dừng: "+vang))
+try:
+    erorr = int(input(do+f"Lỗi bao nhiêu nhiệm vụ thì dừng {luc}|{xlacay} [hoặc nhấn enter để bỏ qua nhiệm vụ lỗi]: "+vang))
+except:
+    erorr = 1000
 os.system('clear')
-inten(do,xanh,xduong,vang,syan)
-print(vang+"TOOL BY HIẾU TOOL")
-print(vang+"TÀI KHOẢN ĐANG AUTO: "+trang+listname[stt]+"=> "+vang+"ID:"+trang+str(listid[stt]))
-print(trang+"=====================================================================")
+banner()
+print(syan+"NICK ĐANG CHẠY: "+trang+listname[stt]+"=> "+syan+"ID:"+trang+str(listid[stt]))
+print(xlacay+"=====================================================================")
 tong = 0
+die = 0
 while True:
-    time.sleep(1)
-    print(trang+'ĐANG LẤY NHIỆM VỤ TIKTOK                        ',end="\r")
+    time.sleep(0)
+    print(syan+'ĐANG LẤY NHIỆM VỤ TIKTOK                        ',end="\r")
     while True:
         try:
-            getjob = requests.get("https://sv5.golike.net/api/advertising/publishers/tiktok/jobs?account_id="+str(listid[stt])+"&data=null",headers=head_login).json()
+            getjob = requests.get("https://gateway.golike.net/api/advertising/publishers/tiktok/jobs?account_id="+str(listid[stt])+"&data=null",headers=head_login).json()
             link = getjob['data']['link']
             break
         except:
@@ -154,11 +149,11 @@ while True:
     object_id = getjob['data']['object_id']
     os.system('termux-open '+link)
     # os.system('start '+link)
-    for i in range(11,0,-1):
+    for i in range(time_,0,-1):
         if (type_acction == "follow"):
-            print(vang+'VUI LÒNG THỰC HIỆN FOLLOW TRONG '+trang+str(i)+syan+' GIÂY                                  ',end= "\r")
+            print(syan+'VUI LÒNG THỰC HIỆN FOLLOW TRONG '+trang+str(i)+syan+' GIÂY                                  ',end= "\r")
         elif (type_acction == "like"):
-            print(vang+'VUI lÒNG THỰC HIỆN THẢ TIM TRONG '+trang+str(i)+syan+' giây                                 ',end= "\r")
+            print(syan+'VUI lÒNG THỰC HIỆN THẢ TIM TRONG '+trang+str(i)+syan+' giây                                 ',end= "\r")
         time.sleep(1)
     hd = {
         "Accept": "application/json, text/plain, */*",
@@ -167,11 +162,11 @@ while True:
         "Content-Type": "application/json;charset=UTF-8",
         "referer": "https://app.golike.net/",
         "origin": "https://app.golike.net",
-        "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36",
-        "T": t
+        "User-Agent":"Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36",
+        "T": "VFZSWk5VNVVhelJOZWxWNVRXYzlQUT09"
     }
     dt = f'{{"account_id": "{str(listid[stt])}","ads_id": "{str(id_job)}","async": true,"data": null}}'
-    print(vang+"ĐANG NHẬN TIỀN                                                         ",end = "\r")
+    print(syan+"ĐANG NHẬN TIỀN                                                         ",end = "\r")
     getxu = requests.post('https://sv5.golike.net/api/advertising/publishers/tiktok/complete-jobs',data=dt,headers=hd).json()
     if (getxu['status'] != 200):
         getxu1 = requests.post('https://sv5.golike.net/api/advertising/publishers/tiktok/complete-jobs',data=dt,headers=hd).json()
@@ -185,12 +180,18 @@ while True:
         xu =  getxu['data']['prices']
     if (success == 1):
         tong = tong + 1 
-        now = datetime.now()
-        current_time = now.strftime("%H:%M:%S")
-        title = trang+"_HIẾU_TOOL_"+do+" ❖  "+trang+current_time+do+" ❖  "+vang+type_acction+do+" ❖  "+vang+str(id_job)+do+" ❖  "+trang+"+"+str(xu)+do+" ⇒  "+do+"["+vang+str(tong)+do+"]              \n"
-        cc(title)
+        if tong == dung:
+            exit()
+        else:
+            now = datetime.now()
+            current_time = now.strftime("%H:%M:%S")
+            title = trang+"HIẾU-TOOL"+do+" 🍀  "+trang+current_time+do+" 🍀  "+vang+type_acction+do+" 🍀  "+vang+str(id_job)+do+" 🍀  "+trang+"+"+str(xu)+xduong+" ⇒  "+syan+"["+do+str(tong)+syan+"]              \n"
+            cc(title)
     elif (success == 0):
-        print(do+"JOB LỖI, BỎ QUA NHIỆM VỤ                                    ",end = "\r")
+        die += 1
+        if die == erorr:
+            break
+        print(do+f"JOB LỖI, BỎ QUA NHIỆM VỤ {die}                                   ",end = "\r")
         dt1 = f'{{"account_id": "{str(listid[stt])}","ads_id": "{str(id_job)}","type": "{type_acction}","object_id": "{object_id}"}}'
         skipjob = requests.post('https://sv5.golike.net/api/advertising/publishers/tiktok/skip-jobs',data=dt1,headers=hd).json()
         if (skipjob['status'] == 200):
